@@ -1,13 +1,8 @@
 import "./Game.scss";
 import { useState } from "react";
+import Card from "../Card/Card";
 
-function Game() {
-  const [score, setScore] = useState(0);
-  const [hiScore, setHiScore] = useState(0);
-  const [gameState, setGameState] = useState("levelStart");
-  const [level, setLevel] = useState(1);
-  const [cards, setCards] = useState([]);
-
+function Game({ score, hiScore, level, cards, handleClick }) {
   return (
     <>
       <p className="main__rules">
@@ -21,6 +16,17 @@ function Game() {
       </div>
 
       <h2 className="main__level">Level {level}</h2>
+
+      <div className="card-grid">
+        {cards.map((card) => (
+          <Card
+            title={card.name}
+            key={card.id}
+            imgLink={card.image}
+            handleClick={() => handleClick(card.id)}
+          />
+        ))}
+      </div>
     </>
   );
 }

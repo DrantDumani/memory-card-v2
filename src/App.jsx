@@ -84,7 +84,8 @@ function App() {
       const newCards = cards.map((el) =>
         el.id === id ? { ...el, clicked: true } : el
       );
-      if (newCards.every((el) => el.picked)) {
+      console.log(newCards);
+      if (newCards.every((el) => el.clicked)) {
         setLevel((l) => l + 1);
         handleLevelComplete();
       } else {
@@ -123,7 +124,15 @@ function App() {
 
       <main className="main">
         {levelStart && <LevelStart level={level} handleStart={startLevel} />}
-        {isPlaying && <Game />}
+        {isPlaying && (
+          <Game
+            score={score}
+            hiScore={hiScore}
+            level={level}
+            cards={cards}
+            handleClick={pickCard}
+          />
+        )}
       </main>
 
       <footer className="footer">
