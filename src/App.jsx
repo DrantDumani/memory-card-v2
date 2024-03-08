@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Game from "./components/Game/Game";
 import dummyImg from "./assets/images/dummy.jpg";
 import LevelStart from "./components/LevelStart/LevelStart";
+import GameOver from "./components/GameOver/GameOver";
 
 const dummyStore = () => {
   const store = [];
@@ -84,7 +85,7 @@ function App() {
       const newCards = cards.map((el) =>
         el.id === id ? { ...el, clicked: true } : el
       );
-      console.log(newCards);
+
       if (newCards.every((el) => el.clicked)) {
         setLevel((l) => l + 1);
         handleLevelComplete();
@@ -105,15 +106,17 @@ function App() {
 
   const restartGame = () => {
     const levelOne = 1;
-    const firstLevel = randomSubArray(cardStore, levelOne);
+    const firstLevel = createLevel(cardStore, levelOne);
 
     setScore(0);
     setLevel(levelOne);
     setCards(firstLevel);
+    setGameState("isPlaying");
   };
 
   const levelStart = gameState === "levelStart";
   const isPlaying = gameState === "isPlaying";
+  const gameOver = gameState === "gameOver";
 
   return (
     <>
@@ -133,6 +136,7 @@ function App() {
             handleClick={pickCard}
           />
         )}
+        {gameOver && <GameOver score={score} handleRestart={restartGame} />}
       </main>
 
       <footer className="footer">
