@@ -9,7 +9,7 @@ function Game() {
   const [cards, setCards] = useState([]);
 
   return (
-    <main className="main">
+    <>
       <p className="main__rules">
         <span className="main__rules--bold">Rules: </span>Click on a card, but
         don&apos;t click the same card twice per level.
@@ -21,7 +21,7 @@ function Game() {
       </div>
 
       <h2 className="main__level">Level {level}</h2>
-    </main>
+    </>
   );
 }
 

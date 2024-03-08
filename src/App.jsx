@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Game from "./components/Game/Game";
 import dummyImg from "./assets/images/dummy.jpg";
+import LevelStart from "./components/LevelStart/LevelStart";
 
 const dummyStore = () => {
   const store = [];
@@ -72,6 +73,7 @@ function App() {
   const startLevel = () => {
     const newLevel = createLevel(cardStore, level);
     setCards(newLevel);
+    setGameState("isPlaying");
   };
 
   const pickCard = (id) => {
@@ -82,8 +84,10 @@ function App() {
       const newCards = cards.map((el) =>
         el.id === id ? { ...el, clicked: true } : el
       );
-      if (newCards.every((el) => el.picked)) handleLevelComplete();
-      else {
+      if (newCards.every((el) => el.picked)) {
+        setLevel((l) => l + 1);
+        handleLevelComplete();
+      } else {
         const shuffled = shuffleArray(newCards);
         setCards(shuffled);
       }
@@ -107,6 +111,9 @@ function App() {
     setCards(firstLevel);
   };
 
+  const levelStart = gameState === "levelStart";
+  const isPlaying = gameState === "isPlaying";
+
   return (
     <>
       <header className="header">
@@ -114,7 +121,10 @@ function App() {
         <p className="header__credit-text">Created by Darnell</p>
       </header>
 
-      <Game />
+      <main className="main">
+        {levelStart && <LevelStart level={level} handleStart={startLevel} />}
+        {isPlaying && <Game />}
+      </main>
 
       <footer className="footer">
         <p className="footer__text">
