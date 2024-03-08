@@ -78,6 +78,7 @@ function App() {
     const picked = cards.find((card) => card.id === id);
     if (picked.clicked) handleGameOver();
     else {
+      updateScore();
       const newCards = cards.map((el) =>
         el.id === id ? { ...el, clicked: true } : el
       );
