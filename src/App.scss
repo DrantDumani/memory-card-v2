@@ -1,4 +1,5 @@
 @use "./partials/variables" as *;
+@use "./partials/mixins" as *;
 
 @font-face {
   font-family: "Sui Generis";
@@ -18,6 +19,8 @@ body {
   color: #fff;
   font-family: "Sui Generis", Cambria, Cochin, Georgia, Times, "Times New Roman",
     serif;
+  max-width: 75rem;
+  margin: 0 auto;
 }
 
 a {
@@ -37,6 +40,9 @@ a {
   align-items: center;
   padding-bottom: 2.25rem;
   gap: 0.5rem 0;
+  @include tablet {
+    @include tab-pad-rules;
+  }
 }
 
 .main {
@@ -44,6 +50,9 @@ a {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @include tablet {
+    @include tab-pad-rules;
+  }
 
   &__text {
     border: 1.5px solid #fff;
@@ -76,6 +85,9 @@ a {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  @include tablet {
+    @include tab-pad-rules;
+  }
 
   &__text {
     font-size: $footer-font-size;
