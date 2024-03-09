@@ -101,7 +101,7 @@ function App() {
   return (
     <>
       <header className="header">
-        <h1 className="header__title">Miimory Cards</h1>
+        <h1 className="header__title">Amiimory Cards</h1>
         <p className="header__credit-text">Created by Darnell</p>
       </header>
 
