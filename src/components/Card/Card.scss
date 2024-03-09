@@ -1,5 +1,35 @@
-//dummy values
-.card-btn__img {
-  width: 150px;
-  height: auto;
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+
+.card-btn {
+  @include btn-style;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  border: $card-border;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:hover {
+    border-width: 5px;
+    border-color: #27e9ff;
+  }
+
+  &__title {
+    display: block;
+    border-bottom: $card-border;
+    padding-bottom: 0.375rem;
+    font-size: 18px;
+  }
+
+  &__img {
+    object-fit: contain;
+    height: 18.75rem;
+  }
 }
+
+// .card-btn__img {
+//   width: 150px;
+//   height: auto;
+// }

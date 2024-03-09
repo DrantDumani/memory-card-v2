@@ -1,0 +1,18 @@
+@use "../../partials/mixins" as *;
+@use "../../partials/variables" as *;
+
+.game-over {
+  text-align: center;
+
+  &__heading {
+    font-size: 2rem;
+  }
+
+  &__btn {
+    @include btn-style;
+    margin-top: 1rem;
+    &:hover {
+      background-color: $btn-hover;
+    }
+  }
+}
