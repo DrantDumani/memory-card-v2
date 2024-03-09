@@ -37,10 +37,16 @@ function App() {
     getData();
   }, []);
 
+  useEffect(() => {
+    const savedScore = localStorage.getItem("hiScore");
+    setHiScore(savedScore || 0);
+  }, []);
+
   const updateScore = () => {
     setScore((s) => {
       const newScore = s + 1;
       if (newScore > hiScore) setHiScore(newScore);
+      localStorage.setItem("hiScore", newScore);
       return newScore;
     });
   };
