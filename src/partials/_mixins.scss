@@ -20,3 +20,8 @@
   padding-left: $tab-pad-hor;
   padding-right: $tab-pad-hor;
 }
+
+@mixin animation-rules {
+  transform-origin: top;
+  animation: 0.5s ease-out $ani-name forwards;
+}

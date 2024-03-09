@@ -4,7 +4,7 @@
 .level-start {
   text-align: center;
   margin-top: 2rem;
-
+  @include animation-rules;
   &__level {
     font-size: 1.75rem;
   }
