@@ -33,7 +33,7 @@ const createLevel = (db, modifier) => {
   const len = 4 + (modifier - 1) * 2;
   return randomSubArray(db, len).map((info) => ({
     name: info.name,
-    id: info.head,
+    id: `${info.head}${info.tail}`,
     image: info.image,
     clicked: false,
   }));
@@ -51,8 +51,12 @@ function App() {
     const getData = async () => {
       let cache = JSON.parse(sessionStorage.getItem("amiibo"));
       if (!cache || cache.length < 100) {
-        const data = await dummyStore();
-        cache = randomSubArray(data, 100);
+        const resp = await fetch(
+          "https://amiiboapi.com/api/amiibo/?type=figure"
+        );
+        if (!resp.ok) throw new Error("Unable to retrieve data.");
+        const data = await resp.json();
+        cache = randomSubArray(data.amiibo, 100);
         sessionStorage.setItem("amiibo", JSON.stringify(cache));
       }
       setCardStore(cache);
