@@ -1,26 +1,21 @@
 import "./Game.scss";
-import { useState } from "react";
+import Card from "../Card/Card";
 
-function Game() {
-  const [score, setScore] = useState(0);
-  const [hiScore, setHiScore] = useState(0);
-  const [gameState, setGameState] = useState("levelStart");
-  const [level, setLevel] = useState(1);
-  const [cards, setCards] = useState([]);
-
+function Game({ level, cards, handleClick }) {
   return (
     <>
-      <p className="main__rules">
-        <span className="main__rules--bold">Rules: </span>Click on a card, but
-        don&apos;t click the same card twice per level.
-      </p>
+      <h2 className="game-level">Level {level}</h2>
 
-      <div className="scoreboard">
-        <p className="scoreboard__text">Current Score: {score}</p>
-        <p className="scoreboard__text">High Score: {hiScore}</p>
+      <div className="card-grid">
+        {cards.map((card) => (
+          <Card
+            title={card.name}
+            key={card.id}
+            imgLink={card.image}
+            handleClick={() => handleClick(card.id)}
+          />
+        ))}
       </div>
-
-      <h2 className="main__level">Level {level}</h2>
     </>
   );
 }

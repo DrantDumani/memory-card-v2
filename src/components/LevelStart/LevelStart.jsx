@@ -1,7 +1,8 @@
 import "./LevelStart.scss";
 
 const messages = {
-  easy: ["Aim for a high score", "Not bad!", "Pretty good!"],
+  start: ["Aim for a high score"],
+  easy: ["Not bad!", "Pretty good!", "You're alright!"],
   med: [
     "Woah!",
     "You're still playing this?!",
@@ -18,7 +19,8 @@ const messages = {
 
 function LevelStart({ level, handleStart }) {
   let msgBank = null;
-  if (level < 10) msgBank = messages.easy;
+  if (level === 1) msgBank = messages.start;
+  else if (level < 10) msgBank = messages.easy;
   else if (level < 24) msgBank = messages.med;
   else msgBank = messages.hard;
 

@@ -1,0 +1,27 @@
+@use "./variables" as *;
+
+@mixin btn-style {
+  background-color: inherit;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  color: inherit;
+  font-family: inherit;
+  font-size: 2.5rem;
+  padding: 0.5rem;
+}
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tab-pad-rules {
+  padding-left: $tab-pad-hor;
+  padding-right: $tab-pad-hor;
+}
+
+@mixin animation-rules {
+  transform-origin: top;
+  animation: 0.5s ease-out $ani-name forwards;
+}
