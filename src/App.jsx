@@ -99,6 +99,11 @@ function App() {
       </header>
 
       <main className="main">
+        <div className="scoreboard">
+          <p className="scoreboard__text">Current Score: {score}</p>
+          <p className="scoreboard__text">High Score: {hiScore}</p>
+        </div>
+
         {levelStart && <LevelStart level={level} handleStart={startLevel} />}
         {isPlaying && (
           <Game
