@@ -43,6 +43,10 @@ a {
   @include tablet {
     @include tab-pad-rules;
   }
+
+  &__title {
+    text-align: center;
+  }
 }
 
 .main {
